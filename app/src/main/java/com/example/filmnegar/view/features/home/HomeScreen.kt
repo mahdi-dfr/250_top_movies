@@ -54,47 +54,27 @@ fun HomeScreen(
             ) {
 
             }
-
-//            Card(
-//                Modifier
-//                    .size(200.dp)
-//                    .graphicsLayer {
-//                        val pageOffset = (
-//                                (pagerState.currentPage - page) + pagerState
-//                                    .currentPageOffsetFraction
-//                                ).absoluteValue
-//
-//                        // We animate the alpha, between 50% and 100%
-////                        alpha = lerp(
-////                            start = 0.5f,
-////                            stop = 1f,
-////                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
-////                        )
-//                    }
-//            ) {
-//                // Card content
-//            }
         }
 
         Spacer(modifier = Modifier.height(40.dp))
 
-        CategoryBox(boxTitle = "فیلم")
+        CategoryBox(boxTitle = "فیلم", viewModel.film.value)
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        CategoryBox(boxTitle = "سریال")
+        CategoryBox(boxTitle = "سریال", viewModel.series.value)
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        CategoryBox(boxTitle = "اکشن")
+        CategoryBox(boxTitle = "اکشن", viewModel.action.value)
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        CategoryBox(boxTitle = "انیمیشن")
+        CategoryBox(boxTitle = "انیمیشن", viewModel.animation.value)
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        CategoryBox(boxTitle = "عاشقانه")
+        CategoryBox(boxTitle = "عاشقانه", viewModel.drama.value)
 
         Spacer(modifier = Modifier.height(80.dp))
 

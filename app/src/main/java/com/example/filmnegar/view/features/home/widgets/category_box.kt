@@ -17,10 +17,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.example.filmnegar.model.data.Movie
 
 @Composable
 fun CategoryBox(
-     boxTitle: String
+     boxTitle: String,
+     movies: List<Movie>
 ) {
     Box(
         modifier = Modifier
@@ -62,7 +65,7 @@ fun CategoryBox(
                 modifier = Modifier.padding(top = 16.dp),
                 contentPadding = PaddingValues(end = 16.dp)
             ) {
-                items(10) {
+                items(movies.size) {
                     Card(
                         modifier = Modifier
                             .width(170.dp)
@@ -70,8 +73,11 @@ fun CategoryBox(
                             .padding(start = 16.dp)
                             .clickable {  },
                         shape = RoundedCornerShape(15.dp),
-                        backgroundColor = Color.Red
                     ) {
+                        AsyncImage(
+                            model = movies[it].baner,
+                            contentDescription = null,
+                        )
 
 
                     }

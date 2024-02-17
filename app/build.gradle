@@ -95,4 +95,7 @@ dependencies {
     // System Ui Controller
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.17.0"
 
+    // Coil
+    implementation "io.coil-kt:coil-compose:2.5.0"
+
 }
