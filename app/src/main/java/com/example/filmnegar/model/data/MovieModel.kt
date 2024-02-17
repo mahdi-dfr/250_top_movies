@@ -5,6 +5,7 @@ data class Movie(
     val baner: String,
     val box_office: String,
     val director: String,
+    val type: String,
     val genre: List<Int>,
     val id: Int,
     val imdb_rate: String,

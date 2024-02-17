@@ -16,7 +16,6 @@ import com.example.filmnegar.view.features.home.HomeViewModel
 import com.example.filmnegar.view.features.home.widgets.CategoryBox
 import com.example.filmnegar.view.theme.FilmNegarTheme
 import com.example.filmnegar.view.theme.customOnSecondaryColor
-import javax.inject.Inject
 
 @Preview(showBackground = true)
 @Composable
@@ -33,7 +32,7 @@ fun HomeScreen(
 ) {
     val configuration = LocalConfiguration.current
     val scrollState = rememberScrollState()
-    Log.i("TAG", "HomeeeeeeScreen: "+viewModel.movies.toString())
+    Log.i("TAG", "HomeeeeeeScreen: "+viewModel.allMoviesData.value)
 
 
     Column(

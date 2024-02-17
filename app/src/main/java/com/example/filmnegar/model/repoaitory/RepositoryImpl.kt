@@ -1,5 +1,6 @@
 package com.example.filmnegar.model.repoaitory
 
+import com.example.filmnegar.model.data.Banner
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.model.net.ApiService
 import com.example.filmnegar.utils.DATA_SUCCESS
@@ -13,7 +14,24 @@ class RepositoryImpl(
     override suspend fun getAllMovies(): ServiceResponse<List<Movie>> {
         return try {
             val data = apiService.getAllMovies()
-            ServiceResponse (
+            ServiceResponse(
+                status = "success",
+                message = null,
+                result = data
+            )
+        } catch (e: IOException) {
+            ServiceResponse(
+                status = "failed",
+                message = e.message,
+                result = null
+            )
+        }
+    }
+
+    override suspend fun getBanners(): ServiceResponse<List<Banner>> {
+        return try {
+            val data = apiService.getBanners()
+            ServiceResponse(
                 status = "success",
                 message = null,
                 result = data

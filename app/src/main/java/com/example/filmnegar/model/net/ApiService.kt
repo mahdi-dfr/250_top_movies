@@ -1,5 +1,6 @@
 package com.example.filmnegar.model.net
 
+import com.example.filmnegar.model.data.Banner
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.utils.BASE_URL
 import retrofit2.Retrofit
@@ -9,6 +10,11 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("movie")
+    @GET("movie/")
     suspend fun getAllMovies(): List<Movie>
+
+    @GET("banner/")
+    suspend fun getBanners() : List<Banner>
+
+
 }
