@@ -1,6 +1,9 @@
 package com.example.filmnegar.view
 
 import HomeScreen
+import android.annotation.SuppressLint
+import android.util.Log
+
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -18,47 +21,52 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.filmnegar.utils.BottomNavItem
 import com.example.filmnegar.utils.MyScreens
+import com.example.filmnegar.view.features.home.movie.MovieScreen
 import com.example.filmnegar.view.features.search.SearchScreen
 import com.example.filmnegar.view.theme.customPrimaryColor
 
+
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun FilmNegar() {
 
     val navController = rememberNavController()
-
-    Scaffold(topBar = {
-        TopAppBar(backgroundColor = customPrimaryColor) {
-        }
-    },
-        bottomBar = {
-            CustomNavigationBar(navController)
-        }) {
+    Scaffold(
+        backgroundColor = customPrimaryColor,
+        bottomBar = { CustomNavigationBar(navController = navController) }
+    ) {
 
 
         NavHost(
             navController = navController,
-            startDestination = MyScreens.HomeScreen.rout,){
+            startDestination = MyScreens.MovieScreen.rout,
+        ) {
 
-            composable(MyScreens.HomeScreen.rout){
-                HomeScreen()
+            composable(MyScreens.HomeScreen.rout) {
+                HomeScreen(navController)
             }
 
-            composable(MyScreens.SearchScreen.rout){
-                SearchScreen()
+            composable(MyScreens.SearchScreen.rout) {
+                SearchScreen(navController)
             }
 
-            composable(MyScreens.DashboardScreen.rout){
+            composable(MyScreens.DashboardScreen.rout) {
                 DashboardScreen()
             }
-        }
 
+            composable(MyScreens.MovieScreen.rout) {
+                MovieScreen()
+            }
+        }
     }
+
 
 }
 
@@ -90,7 +98,6 @@ fun CustomNavigationBar(navController: NavController) {
 
     var selectedNavItemIndex by rememberSaveable {
         mutableStateOf(0)
-
     }
 
     NavigationBar(containerColor = customPrimaryColor) {
@@ -109,9 +116,12 @@ fun CustomNavigationBar(navController: NavController) {
                     }
                 },
                 label = {
-                    Text(text = bottomNavItem.title)
+                    Text(text = bottomNavItem.title, color = Color.White)
                 })
         }
 
     }
 }
+
+
+

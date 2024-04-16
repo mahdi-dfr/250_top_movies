@@ -43,17 +43,19 @@ fun CategoryBox(
 
             ) {
                 Row (Modifier.clickable { }){
-                    Icon(imageVector  = Icons.Filled.KeyboardArrowLeft, contentDescription = "")
+                    Icon(imageVector  = Icons.Filled.KeyboardArrowLeft, tint=Color.White, contentDescription = "")
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
                         text = "مشاهده همه",
                         fontSize = 18.sp,
+                        color = Color.White
                     )
                 }
 
                 Text(
                     text = boxTitle,
                     fontSize = 18.sp,
+                    color = Color.White,
                     fontWeight = FontWeight.Bold,
                 )
 

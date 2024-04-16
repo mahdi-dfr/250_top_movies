@@ -1,22 +1,23 @@
 package com.example.filmnegar.view.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-private val DarkColorPalette = darkColors(
+private val DarkColorPalette = darkColorScheme(
     primary = customPrimaryColor,
-    primaryVariant = Purple700,
-    secondary = customOnSecondaryColor
+    background = customPrimaryColor,
+    surface = customPrimaryColor,
+    secondary = customOnSecondaryColor,
+    onSecondary = customOnSecondaryColor,
 )
 
-private val LightColorPalette = lightColors(
+private val LightColorPalette = lightColorScheme(
     primary = customPrimaryColor,
-    primaryVariant = Purple700,
     secondary = customSecondaryColor,
 
     background = customPrimaryColor,
@@ -30,14 +31,11 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun FilmNegarTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
+    val colors = DarkColorPalette
+
 
     MaterialTheme(
-        colors = colors,
+        colorScheme  = colors,
         typography = Typography,
         shapes = Shapes,
         content = content
@@ -45,4 +43,5 @@ fun FilmNegarTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composa
 
     val systemUiController = rememberSystemUiController()
     systemUiController.setStatusBarColor(customPrimaryColor)
+    systemUiController.setNavigationBarColor(customPrimaryColor)
 }

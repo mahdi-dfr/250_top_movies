@@ -1,6 +1,7 @@
 package com.example.filmnegar.view.theme
 
-import androidx.compose.material.Typography
+import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -14,10 +15,11 @@ val myFontFamily = FontFamily(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    body1 = TextStyle(
+    displayMedium = TextStyle(
         fontFamily = myFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = 16.sp,
+        color = Color.White
     )
     /* Other default text styles to override
     button = TextStyle(
