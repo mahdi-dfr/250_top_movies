@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 import com.example.filmnegar.R
 
 val myFontFamily = FontFamily(
-    Font(resId = R.font.iran, weight = FontWeight.Normal)
+    Font(resId = R.font.iran_sans, weight = FontWeight.Normal)
 )
 
 // Set of Material typography styles to start with
