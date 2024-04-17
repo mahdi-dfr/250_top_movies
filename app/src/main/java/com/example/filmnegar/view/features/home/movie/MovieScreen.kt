@@ -30,6 +30,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme.typography
@@ -68,12 +69,14 @@ fun MovieScreen() {
         Modifier
             .verticalScroll(scrollState)
             .padding(horizontal = 20.dp)
-            .fillMaxWidth(), horizontalAlignment = Alignment.End
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.End
     ) {
 
         ImageCard(
             url = "https://cdn.vox-cdn.com/thumbor/0w5aZu5XweQgRK_Ljoyq9Her8N8=/0x0:1200x800/1200x800/filters:focal(502x21:694x213)/cdn.vox-cdn.com/uploads/chorus_image/image/73167146/Dune2_LegendaryEntertainment_Getty_Ringer.0.jpg",
-            title = "Dune 2024"
+            title = "Dune 2024",
+            imdb = "8.1"
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -97,7 +100,7 @@ fun MovieScreen() {
             }
 
             Text(
-                text = "نام فیلم",
+                text = "تل ماسه",
                 color = Color.White,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Right,
@@ -107,7 +110,8 @@ fun MovieScreen() {
 
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(30.dp))
+
 
         Text(
             text = ":بازیگران",
@@ -154,13 +158,9 @@ fun MovieScreen() {
         Spacer(modifier = Modifier.height(8.dp))
 
         Card(
-            modifier = Modifier
-                .border(
-                    width = 1.dp,
-                    color = Color.White,
-                    shape = RoundedCornerShape(15.dp)
-                ),
-            shape = RoundedCornerShape(15.dp)
+            modifier = Modifier.border(
+                width = 1.dp, color = Color.White, shape = RoundedCornerShape(15.dp)
+            ), shape = RoundedCornerShape(15.dp)
         ) {
             Text(
                 text = "کارگردان1",
@@ -187,12 +187,6 @@ fun MovieScreen() {
                 WorkerItem(item)
             }
         }
-
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-
-
 
 
         Spacer(modifier = Modifier.height(100.dp))
