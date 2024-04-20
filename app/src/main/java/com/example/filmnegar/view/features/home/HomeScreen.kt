@@ -1,33 +1,42 @@
+
 import android.annotation.SuppressLint
-import android.provider.CalendarContract.Colors
 import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.filmnegar.view.CustomNavigationBar
 import com.example.filmnegar.view.features.home.HomeViewModel
 import com.example.filmnegar.view.features.home.widgets.CategoryBox
-import com.example.filmnegar.view.theme.FilmNegarTheme
-import com.example.filmnegar.view.theme.customOnSecondaryColor
+import com.example.filmnegar.view.theme.customPrimaryColor
+import com.example.filmnegar.view.theme.myFontFamily
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     navController: NavHostController,
@@ -38,53 +47,86 @@ fun HomeScreen(
     Log.i("TAG", "HomeeeeeeScreen: " + viewModel.allMoviesData.value)
 
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp)
-            .verticalScroll(state = scrollState)
-    ) {
-        val pagerState = rememberPagerState(pageCount = {
-            4
-        })
-        HorizontalPager(state = pagerState) { page ->
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .padding(horizontal = 1.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                ),
-            ) {
 
-            }
+    Scaffold(
+        topBar = {
+            MyAppBar()
         }
 
-        Spacer(modifier = Modifier.height(40.dp))
 
-        CategoryBox(boxTitle = "فیلم", viewModel.film.value)
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        CategoryBox(boxTitle = "سریال", viewModel.series.value)
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        CategoryBox(boxTitle = "اکشن", viewModel.action.value)
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        CategoryBox(boxTitle = "انیمیشن", viewModel.animation.value)
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        CategoryBox(boxTitle = "عاشقانه", viewModel.drama.value)
-
-        Spacer(modifier = Modifier.height(80.dp))
+    ) { value ->
 
 
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(value)
+                .verticalScroll(state = scrollState)
+        ) {
+            val pagerState = rememberPagerState(pageCount = {
+                4
+            })
+            HorizontalPager(state = pagerState) { page ->
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(300.dp)
+                        .padding(1.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    ),
+                ) {
+
+                }
+            }
+
+            Spacer(modifier = Modifier.height(40.dp))
+
+            CategoryBox(boxTitle = "فیلم", viewModel.film.value, navigator = navController)
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            CategoryBox(boxTitle = "سریال", viewModel.series.value, navigator = navController)
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            CategoryBox(boxTitle = "اکشن", viewModel.action.value, navigator = navController)
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            CategoryBox(boxTitle = "انیمیشن", viewModel.animation.value, navigator = navController)
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            CategoryBox(boxTitle = "عاشقانه", viewModel.drama.value, navigator = navController)
+
+            Spacer(modifier = Modifier.height(80.dp))
+
+
+        }
     }
 
 
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyAppBar() {
+    TopAppBar(
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = customPrimaryColor),
+
+        title = {
+            Text(
+                text = "فیلم نگار",
+                fontSize = 21.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                fontFamily = myFontFamily,
+                modifier = Modifier
+                    .fillMaxWidth() // Makes the text occupy the full width of the TopAppBar
+                    .padding(horizontal = 16.dp)
+            )
+        }
+    )
 }

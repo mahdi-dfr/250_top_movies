@@ -2,11 +2,8 @@ package com.example.filmnegar.view
 
 import HomeScreen
 import android.annotation.SuppressLint
-import android.util.Log
-
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
@@ -28,6 +25,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.filmnegar.utils.BottomNavItem
 import com.example.filmnegar.utils.MyScreens
+import com.example.filmnegar.view.features.home.allMovies.AllMoviesScreen
 import com.example.filmnegar.view.features.home.movie.MovieScreen
 import com.example.filmnegar.view.features.search.SearchScreen
 import com.example.filmnegar.view.theme.customPrimaryColor
@@ -63,6 +61,10 @@ fun FilmNegar() {
 
             composable(MyScreens.MovieScreen.rout) {
                 MovieScreen()
+            }
+
+            composable(MyScreens.AllMoviesScreen.rout) {
+                AllMoviesScreen()
             }
         }
     }
@@ -106,7 +108,7 @@ fun CustomNavigationBar(navController: NavController) {
                 selected = selectedNavItemIndex == index,
                 onClick = {
                     selectedNavItemIndex = index
-                    navController.navigate(bottomNavItem.route)
+                    navController.navigate(route = bottomNavItem.route)
 
                 }, icon = {
                     if (selectedNavItemIndex == index) {
