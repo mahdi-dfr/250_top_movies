@@ -13,7 +13,7 @@ fun AllMoviesScreen() {
         topBar = {
             MyAppBar()
         }
-    ) {value->
+    ) {
 
 
 
