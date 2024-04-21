@@ -18,3 +18,5 @@ val writerList = listOf(
     "نویسنده 2",
     "نویسنده 2",
 )
+
+const val imageFakeUrl = "https://cdn.vox-cdn.com/thumbor/0w5aZu5XweQgRK_Ljoyq9Her8N8=/0x0:1200x800/1200x800/filters:focal(502x21:694x213)/cdn.vox-cdn.com/uploads/chorus_image/image/73167146/Dune2_LegendaryEntertainment_Getty_Ringer.0.jpg"

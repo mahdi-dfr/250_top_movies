@@ -27,6 +27,7 @@ import com.example.filmnegar.utils.BottomNavItem
 import com.example.filmnegar.utils.MyScreens
 import com.example.filmnegar.view.features.home.allMovies.AllMoviesScreen
 import com.example.filmnegar.view.features.home.movie.MovieScreen
+import com.example.filmnegar.view.features.myMovies.DashboardScreen
 import com.example.filmnegar.view.features.search.SearchScreen
 import com.example.filmnegar.view.theme.customPrimaryColor
 
@@ -56,7 +57,7 @@ fun FilmNegar() {
             }
 
             composable(MyScreens.DashboardScreen.rout) {
-                DashboardScreen()
+                DashboardScreen(navController = navController)
             }
 
             composable(MyScreens.MovieScreen.rout) {
@@ -64,7 +65,7 @@ fun FilmNegar() {
             }
 
             composable(MyScreens.AllMoviesScreen.rout) {
-                AllMoviesScreen()
+                AllMoviesScreen(navController = navController)
             }
         }
     }

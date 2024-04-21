@@ -1,4 +1,3 @@
-
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -11,9 +10,13 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -50,7 +53,7 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            MyAppBar()
+            MyAppBar(navController=navController, haveBackButton = false)
         }
 
 
@@ -111,7 +114,10 @@ fun HomeScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyAppBar() {
+fun MyAppBar(
+    navController: NavHostController,
+    haveBackButton: Boolean
+) {
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(containerColor = customPrimaryColor),
 
@@ -124,9 +130,15 @@ fun MyAppBar() {
                 textAlign = TextAlign.Center,
                 fontFamily = myFontFamily,
                 modifier = Modifier
-                    .fillMaxWidth() // Makes the text occupy the full width of the TopAppBar
-                    .padding(horizontal = 16.dp)
+                    .fillMaxWidth()
+                    .padding(end = if (haveBackButton) 60.dp else 16.dp, start = 16.dp)
             )
-        }
-    )
+        },
+        navigationIcon = {
+            if(haveBackButton){
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                }
+            }
+        })
 }

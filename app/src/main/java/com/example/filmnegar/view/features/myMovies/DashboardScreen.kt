@@ -1,7 +1,6 @@
-package com.example.filmnegar.view.features.home.allMovies
+package com.example.filmnegar.view.features.myMovies
 
 import MyAppBar
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,12 +14,10 @@ import androidx.navigation.NavHostController
 import com.example.filmnegar.utils.MyScreens
 import com.example.filmnegar.view.features.home.widgets.MovieItem
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun AllMoviesScreen(
-    navController : NavHostController
+fun DashboardScreen(
+    navController: NavHostController
 ) {
-
     val numbers = (0..20).toList()
 
     Scaffold(
@@ -52,4 +49,5 @@ fun AllMoviesScreen(
         }
 
     }
+
 }

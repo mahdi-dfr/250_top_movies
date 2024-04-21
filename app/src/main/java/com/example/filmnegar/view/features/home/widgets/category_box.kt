@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -25,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import coil.compose.AsyncImage
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.utils.MyScreens
 
@@ -79,22 +76,12 @@ fun CategoryBox(
                 modifier = Modifier.padding(top = 16.dp),
                 contentPadding = PaddingValues(end = 16.dp)
             ) {
-                items(movies.size) {
-                    Card(
-                        modifier = Modifier
-                            .width(170.dp)
-                            .height(220.dp)
-                            .padding(start = 16.dp)
-                            .clickable {  },
-                        shape = RoundedCornerShape(15.dp),
-                    ) {
-                        AsyncImage(
-                            model = movies[it].baner,
-                            contentDescription = null,
-                        )
-
-
-                    }
+                items(20) {
+                    MovieItem(
+                        onMovieClicked = {
+                            navigator.navigate(MyScreens.MovieScreen.rout)
+                        }
+                    )
                 }
 
             }
