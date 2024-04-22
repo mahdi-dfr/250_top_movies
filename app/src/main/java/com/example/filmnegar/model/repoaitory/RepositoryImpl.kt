@@ -2,13 +2,14 @@ package com.example.filmnegar.model.repoaitory
 
 import com.example.filmnegar.model.data.Banner
 import com.example.filmnegar.model.data.Movie
+import com.example.filmnegar.model.db.MovieDao
 import com.example.filmnegar.model.net.ApiService
-import com.example.filmnegar.utils.DATA_SUCCESS
 import com.example.filmnegar.utils.ServiceResponse
 import java.io.IOException
 
 class RepositoryImpl(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val database: MovieDao
 ) : MovieRepository {
 
     override suspend fun getAllMovies(): ServiceResponse<List<Movie>> {

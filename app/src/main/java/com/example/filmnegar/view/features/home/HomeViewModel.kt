@@ -1,5 +1,6 @@
 package com.example.filmnegar.view.features.home
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -11,12 +12,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
+@SuppressLint("MutableCollectionMutableState")
 class HomeViewModel @Inject constructor(
     private val repository : RepositoryImpl
 ) : ViewModel() {
 
     private val _allMoviesData = mutableStateOf(listOf<Movie>())
     val allMoviesData : State<List<Movie>> get() = _allMoviesData
+
 
     private val _film = mutableStateOf(mutableListOf<Movie>())
     val film : State<List<Movie>> get() = _film
