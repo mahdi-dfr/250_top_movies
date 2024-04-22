@@ -40,13 +40,15 @@ object MyModule {
     @Singleton
     fun provideDao(appDatabase: AppDatabase): MovieDao = appDatabase.movieDao()
 
+    @Provides
+    @Singleton
     fun provideRoomDatabase(@ApplicationContext context: Context) : AppDatabase{
         return Room.databaseBuilder(context, AppDatabase::class.java, "my_db").build()
     }
 
     @Provides
     @Singleton
-    fun provideRepository(apiService: ApiService,) = RepositoryImpl(apiService)
+    fun provideRepository(apiService: ApiService, movieDao: MovieDao) = RepositoryImpl(apiService, movieDao)
 
 
 
