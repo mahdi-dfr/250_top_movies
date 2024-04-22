@@ -46,7 +46,7 @@ object MyModule {
 
     @Provides
     @Singleton
-    fun provideRepository(apiService: ApiService, dao: MovieDao) = RepositoryImpl(apiService, dao)
+    fun provideRepository(apiService: ApiService,) = RepositoryImpl(apiService)
 
 
 

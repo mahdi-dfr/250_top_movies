@@ -58,13 +58,13 @@ class HomeViewModel @Inject constructor(
                 "1" -> _series.value.add(movie)
             }
 
-            movie.genre.forEach{ genre ->
-                when(genre){
-                    1 -> _action.value.add(movie)
-                    2 -> _animation.value.add(movie)
-                    3 -> _drama.value.add(movie)
-                }
-            }
+//            movie.genre.forEach{ genre ->
+//                when(genre){
+//                    1 -> _action.value.add(movie)
+//                    2 -> _animation.value.add(movie)
+//                    3 -> _drama.value.add(movie)
+//                }
+//            }
 
         }
     }

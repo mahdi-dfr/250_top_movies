@@ -16,5 +16,5 @@ interface MovieDao {
     suspend fun getAllMoviesFromLocal(): List<Movie>
 
     @Query("SELECT * FROM movie_table WHERE id = :movieId")
-    suspend fun getMovie(movieId : Int)
+    suspend fun getMovie(movieId : Int): Movie
 }
