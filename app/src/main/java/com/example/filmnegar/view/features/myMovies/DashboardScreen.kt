@@ -33,7 +33,7 @@ fun DashboardScreen(
         ) {
 
             LazyVerticalGrid(
-                columns = GridCells.Fixed(3),
+                columns = GridCells.Fixed(2),
                 modifier = Modifier.padding(top = 8.dp, bottom = 80.dp, end = 4.dp, start = 4.dp)
             ) {
                 items(numbers.size) {

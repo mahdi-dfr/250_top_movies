@@ -22,15 +22,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.utils.MyScreens
+import com.example.filmnegar.view.features.home.movie.MovieViewModel
 
 @Composable
 fun CategoryBox(
      boxTitle: String,
      movies: List<Movie>,
-     navigator: NavHostController
+     navigator: NavHostController,
+     viewModel: MovieViewModel = hiltViewModel()
 ) {
     Box(
         modifier = Modifier
@@ -79,7 +82,8 @@ fun CategoryBox(
                 items(20) {
                     MovieItem(
                         onMovieClicked = {
-                            navigator.navigate(MyScreens.MovieScreen.rout)
+                            viewModel.getMovieById(1)
+//                            navigator.navigate(MyScreens.MovieScreen.rout)
                         }
                     )
                 }

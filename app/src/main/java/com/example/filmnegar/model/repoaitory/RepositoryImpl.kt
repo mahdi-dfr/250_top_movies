@@ -29,6 +29,23 @@ class RepositoryImpl(
         }
     }
 
+    override suspend fun getMovie(id: Int): ServiceResponse<Movie> {
+        return try {
+            val data = apiService.getMovie(id)
+            ServiceResponse(
+                status = "success",
+                message = null,
+                result = data
+            )
+        } catch (e: IOException) {
+            ServiceResponse(
+                status = "failed",
+                message = e.message,
+                result = null
+            )
+        }
+    }
+
     override suspend fun getBanners(): ServiceResponse<List<Banner>> {
         return try {
             val data = apiService.getBanners()

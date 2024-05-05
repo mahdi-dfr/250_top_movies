@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.model.repoaitory.RepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -42,7 +43,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getAllMovies(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val serviceResponse = repository.getAllMovies()
             if(serviceResponse.status == "success"){
                 _allMoviesData.value = serviceResponse.result!!

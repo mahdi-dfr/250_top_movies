@@ -8,6 +8,8 @@ interface MovieRepository {
 
     suspend fun getAllMovies() : ServiceResponse<List<Movie>>
 
+    suspend fun getMovie(id: Int) : ServiceResponse<Movie>
+
     suspend fun getBanners() : ServiceResponse<List<Banner>>
 
 }

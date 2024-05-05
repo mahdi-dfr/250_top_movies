@@ -50,8 +50,4 @@ object MyModule {
     @Singleton
     fun provideRepository(apiService: ApiService, movieDao: MovieDao) = RepositoryImpl(apiService, movieDao)
 
-
-
-
-
 }
