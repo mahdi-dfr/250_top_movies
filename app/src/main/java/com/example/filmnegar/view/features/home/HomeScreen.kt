@@ -103,6 +103,14 @@ fun HomeScreen(
 
             CategoryBox(boxTitle = "عاشقانه", viewModel.drama.value, navigator = navController)
 
+            Spacer(modifier = Modifier.height(20.dp))
+
+            CategoryBox(boxTitle = "ماجراجویی", viewModel.drama.value, navigator = navController)
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            CategoryBox(boxTitle = "سایر", viewModel.film.value, navigator = navController)
+
             Spacer(modifier = Modifier.height(80.dp))
 
 
