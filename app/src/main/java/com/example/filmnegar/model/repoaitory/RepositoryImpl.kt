@@ -1,5 +1,6 @@
 package com.example.filmnegar.model.repoaitory
 
+import android.util.Log
 import com.example.filmnegar.model.data.Banner
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.model.db.MovieDao
@@ -12,14 +13,16 @@ class RepositoryImpl(
     private val database: MovieDao
 ) : MovieRepository {
 
-    override suspend fun getAllMovies(): ServiceResponse<List<Movie>> {
+    override suspend fun getAllMovies(genre: String?): ServiceResponse<List<Movie>> {
         return try {
-            val data = apiService.getAllMovies()
+            val data = apiService.getAllMovies(genre)
+            Log.i("TAG", "getAllMllllovies: "+data)
             ServiceResponse(
                 status = "success",
                 message = null,
-                result = data
+                result = data.results
             )
+
         } catch (e: IOException) {
             ServiceResponse(
                 status = "failed",

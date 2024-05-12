@@ -6,7 +6,7 @@ import com.example.filmnegar.utils.ServiceResponse
 
 interface MovieRepository {
 
-    suspend fun getAllMovies() : ServiceResponse<List<Movie>>
+    suspend fun getAllMovies(genre: String?) : ServiceResponse<List<Movie>>
 
     suspend fun getMovie(id: Int) : ServiceResponse<Movie>
 

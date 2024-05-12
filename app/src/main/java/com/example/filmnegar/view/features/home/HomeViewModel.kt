@@ -1,6 +1,7 @@
 package com.example.filmnegar.view.features.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -44,7 +45,8 @@ class HomeViewModel @Inject constructor(
 
     private fun getAllMovies(){
         viewModelScope.launch(Dispatchers.IO) {
-            val serviceResponse = repository.getAllMovies()
+            val serviceResponse = repository.getAllMovies(null)
+            Log.i("TAG", "ggggetAllMovies: "+serviceResponse.result)
             if(serviceResponse.status == "success"){
                 _allMoviesData.value = serviceResponse.result!!
                 filterMovies()

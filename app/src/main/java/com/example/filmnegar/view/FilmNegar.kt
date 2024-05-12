@@ -45,7 +45,7 @@ fun FilmNegar() {
 
         NavHost(
             navController = navController,
-            startDestination = MyScreens.MovieScreen.rout,
+            startDestination = MyScreens.HomeScreen.rout,
         ) {
 
             composable(MyScreens.HomeScreen.rout) {

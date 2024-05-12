@@ -2,7 +2,7 @@ package com.example.filmnegar.utils
 
 import com.example.filmnegar.model.data.Movie
 
-const val BASE_URL = "http://192.168.68.141:8000/api/"
+const val BASE_URL = "http://192.168.10.232:8000/api/movie/"
 
 const val DATA_SUCCESS = "success"
 const val DATA_FAILED = "failed"
@@ -23,21 +23,22 @@ val writerList = listOf(
 
 val EMPTY_MOVIE = Movie(
     id = 0,
-    banner = "",
-    boxOffice = "",
-    director = "",
-    type = "",
-    imdbRate = "",
-    originalName = "",
+    originalName = "0",
     persianName = "",
-    prices = "",
-    storyLine = "",
-    tag = "",
-    tizer = "",
-    usersRate = "",
-    viewsCount = "",
+    type = "",
+    director = "",
     writer = "",
-    year = "",
+    storyline = "",
+    viewsCount = 0,
+    tag = "",
+    imdbRate = "",
+    year = 0,
+    banner = "",
+    tizer = "",
+    boxOffice = "",
+    prices = "",
+    usersRate = 0,
+    genre = 0,
 )
 
 const val imageFakeUrl =
