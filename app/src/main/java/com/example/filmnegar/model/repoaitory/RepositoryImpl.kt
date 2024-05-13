@@ -55,7 +55,7 @@ class RepositoryImpl(
             ServiceResponse(
                 status = "success",
                 message = null,
-                result = data
+                result = data.results
             )
         } catch (e: IOException) {
             ServiceResponse(

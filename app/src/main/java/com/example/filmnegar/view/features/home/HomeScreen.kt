@@ -1,3 +1,4 @@
+
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -47,7 +48,8 @@ fun HomeScreen(
 ) {
     val configuration = LocalConfiguration.current
     val scrollState = rememberScrollState()
-    Log.i("TAG", "HomeeeeeeScreen: " + viewModel.allMoviesData.value)
+
+    Log.i("TAG", "HomeScreenssss: "+viewModel.banner.value)
 
 
 
@@ -85,7 +87,7 @@ fun HomeScreen(
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            CategoryBox(boxTitle = "فیلم", viewModel.film.value, navigator = navController)
+            CategoryBox(boxTitle = "فیلم", viewModel.allMoviesData.value, navigator = navController)
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -105,7 +107,7 @@ fun HomeScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "ماجراجویی", viewModel.drama.value, navigator = navController)
+            CategoryBox(boxTitle = "ماجراجویی", viewModel.adventure.value, navigator = navController)
 
             Spacer(modifier = Modifier.height(20.dp))
 

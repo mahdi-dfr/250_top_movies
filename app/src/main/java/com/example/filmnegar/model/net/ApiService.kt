@@ -1,6 +1,6 @@
 package com.example.filmnegar.model.net
 
-import com.example.filmnegar.model.data.Banner
+import com.example.filmnegar.model.data.BannerResult
 import com.example.filmnegar.model.data.Genre
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.model.data.MovieResult
@@ -18,7 +18,7 @@ interface ApiService {
     suspend fun getMovie(id: Int): Movie
 
     @GET("banner/")
-    suspend fun getBanners(): List<Banner>
+    suspend fun getBanners(): BannerResult
 
     @GET("genre/")
     suspend fun getGenre(): List<Genre>
