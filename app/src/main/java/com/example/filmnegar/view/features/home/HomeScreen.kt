@@ -49,7 +49,9 @@ fun HomeScreen(
     val configuration = LocalConfiguration.current
     val scrollState = rememberScrollState()
 
-    Log.i("TAG", "HomeScreenssss: "+viewModel.banner.value)
+    viewModel.getHomeScreenData()
+
+    Log.i("TAG", "HomeScreennnn: "+viewModel.allMoviesData)
 
 
 

@@ -45,14 +45,6 @@ class HomeViewModel @Inject constructor(
     val banner: State<List<Banner>> get() = _banner
 
 
-    init {
-        getAllMovies()
-        getActionMovies()
-        getAnimationMovies()
-        getDramaMovies()
-        getAdventureMovies()
-    }
-
     private fun getAllMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             val serviceResponse = repository.getAllMovies(null)
@@ -106,6 +98,27 @@ class HomeViewModel @Inject constructor(
                 _banner.value = serviceResponse.result!!
             }
         }
+    }
+
+    fun getHomeScreenData() {
+        getAllMovies()
+        getBanner()
+        getActionMovies()
+        getAnimationMovies()
+        getDramaMovies()
+        getAdventureMovies()
+    }
+
+    fun getAllMoviesScreenData(genre: String) {
+        when (genre) {
+            "movie" -> getAllMovies()
+            "action" -> getActionMovies()
+            "Animation" -> getAnimationMovies()
+            "Drama" -> getDramaMovies()
+            "Adventure" -> getAdventureMovies()
+
+        }
+
     }
 
 }

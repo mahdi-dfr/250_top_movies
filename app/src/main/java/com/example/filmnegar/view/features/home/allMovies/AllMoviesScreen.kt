@@ -11,14 +11,17 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.filmnegar.utils.MyScreens
+import com.example.filmnegar.view.features.home.HomeViewModel
 import com.example.filmnegar.view.features.home.widgets.MovieItem
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun AllMoviesScreen(
-    navController : NavHostController
+    navController : NavHostController,
+    viewModel : HomeViewModel = hiltViewModel()
 ) {
 
     val numbers = (0..20).toList()
