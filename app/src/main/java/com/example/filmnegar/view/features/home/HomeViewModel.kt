@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.filmnegar.model.data.Banner
 import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.model.repoaitory.RepositoryImpl
+import com.example.filmnegar.utils.EMPTY_MOVIE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,12 +45,16 @@ class HomeViewModel @Inject constructor(
     private val _banner = mutableStateOf(listOf<Banner>())
     val banner: State<List<Banner>> get() = _banner
 
+    private val _movie = mutableStateOf<Movie>(EMPTY_MOVIE)
+    val movie: State<Movie> get() = _movie
+
 
     private fun getAllMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             val serviceResponse = repository.getAllMovies(null)
             if (serviceResponse.status == "success") {
                 _allMoviesData.value = serviceResponse.result!!
+                _film.value = serviceResponse.result!!
             }
         }
     }
@@ -59,6 +64,7 @@ class HomeViewModel @Inject constructor(
             val serviceResponse = repository.getAllMovies("0")
             if (serviceResponse.status == "success") {
                 _action.value = serviceResponse.result!!
+                _film.value = serviceResponse.result!!
             }
         }
     }
@@ -68,6 +74,7 @@ class HomeViewModel @Inject constructor(
             val serviceResponse = repository.getAllMovies("1")
             if (serviceResponse.status == "success") {
                 _animation.value = serviceResponse.result!!
+                _film.value = serviceResponse.result!!
             }
         }
     }
@@ -77,6 +84,7 @@ class HomeViewModel @Inject constructor(
             val serviceResponse = repository.getAllMovies("2")
             if (serviceResponse.status == "success") {
                 _drama.value = serviceResponse.result!!
+                _film.value = serviceResponse.result!!
             }
         }
     }
@@ -86,6 +94,7 @@ class HomeViewModel @Inject constructor(
             val serviceResponse = repository.getAllMovies("3")
             if (serviceResponse.status == "success") {
                 _adventure.value = serviceResponse.result!!
+                _film.value = serviceResponse.result!!
             }
         }
     }
@@ -96,6 +105,15 @@ class HomeViewModel @Inject constructor(
             val serviceResponse = repository.getBanners()
             if (serviceResponse.status == "success") {
                 _banner.value = serviceResponse.result!!
+            }
+        }
+    }
+
+    fun getMovieById(id: Int){
+        viewModelScope.launch {
+            val serviceResponse = repository.getMovie(id)
+            if(serviceResponse.status == "success"){
+                _movie.value = serviceResponse.result!!
             }
         }
     }

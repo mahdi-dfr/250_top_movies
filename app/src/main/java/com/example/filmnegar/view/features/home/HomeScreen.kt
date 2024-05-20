@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.filmnegar.utils.MyScreens
 import com.example.filmnegar.view.features.home.HomeViewModel
 import com.example.filmnegar.view.features.home.widgets.CategoryBox
 import com.example.filmnegar.view.theme.customPrimaryColor
@@ -89,7 +90,10 @@ fun HomeScreen(
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            CategoryBox(boxTitle = "فیلم", viewModel.allMoviesData.value, navigator = navController)
+            CategoryBox(boxTitle = "فیلم", onShowMoreClicked = {
+                viewModel.getAllMoviesScreenData("movie")
+                navController.navigate(MyScreens.AllMoviesScreen.rout)
+            })
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -97,19 +101,31 @@ fun HomeScreen(
 //
 //            Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "اکشن", viewModel.action.value, navigator = navController)
+            CategoryBox(boxTitle = "اکشن", onShowMoreClicked = {
+                viewModel.getAllMoviesScreenData("action")
+                navController.navigate(MyScreens.AllMoviesScreen.rout)
+            })
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "انیمیشن", viewModel.animation.value, navigator = navController)
+            CategoryBox(boxTitle = "انیمیشن", onShowMoreClicked = {
+                viewModel.getAllMoviesScreenData("Animation")
+                navController.navigate(MyScreens.AllMoviesScreen.rout)
+            })
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "عاشقانه", viewModel.drama.value, navigator = navController)
+            CategoryBox(boxTitle = "عاشقانه", onShowMoreClicked = {
+                viewModel.getAllMoviesScreenData("Drama")
+                navController.navigate(MyScreens.AllMoviesScreen.rout)
+            })
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "ماجراجویی", viewModel.adventure.value, navigator = navController)
+            CategoryBox(boxTitle = "ماجراجویی", onShowMoreClicked = {
+                viewModel.getAllMoviesScreenData("Adventure")
+                navController.navigate(MyScreens.AllMoviesScreen.rout)
+            })
 
             Spacer(modifier = Modifier.height(20.dp))
 

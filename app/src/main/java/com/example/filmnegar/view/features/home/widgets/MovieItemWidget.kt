@@ -1,5 +1,6 @@
 package com.example.filmnegar.view.features.home.widgets
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -21,13 +22,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.utils.imageFakeUrl
 import com.example.filmnegar.view.theme.myFontFamily
 
 @Composable
 fun MovieItem(
-    onMovieClicked :  ()-> Unit
+    movie: Movie,
+    onMovieClicked: () -> Unit
 ) {
+    Log.i("TAG", "MovieItemmmm: " + movie)
     Card(
         modifier = Modifier
             .width(130.dp)
@@ -36,14 +40,14 @@ fun MovieItem(
             .padding(horizontal = 4.dp, vertical = 8.dp),
         shape = RoundedCornerShape(15.dp)
     ) {
-        Box{
+        Box {
             AsyncImage(
                 model = imageFakeUrl,
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
             )
 
-            Box{
+            Box {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -56,14 +60,14 @@ fun MovieItem(
                                 startY = 200f
                             )
                         )
-                ){
+                ) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.BottomCenter
                     ) {
                         Column {
                             Text(
-                                text = "Dune 2024",
+                                text = movie.originalName + " " + movie.year,
                                 fontFamily = myFontFamily,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 17.sp,

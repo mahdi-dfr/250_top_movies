@@ -11,8 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.filmnegar.utils.MyScreens
-import com.example.filmnegar.view.features.home.widgets.MovieItem
 
 @Composable
 fun DashboardScreen(
@@ -37,11 +35,11 @@ fun DashboardScreen(
                 modifier = Modifier.padding(top = 8.dp, bottom = 80.dp, end = 4.dp, start = 4.dp)
             ) {
                 items(numbers.size) {
-                    MovieItem(
-                        onMovieClicked = {
-                            navController.navigate(MyScreens.MovieScreen.rout)
-                        }
-                    )
+//                    MovieItem(
+//                        onMovieClicked = {
+//                            navController.navigate(MyScreens.MovieScreen.rout)
+//                        }
+//                    )
 
                 }
             }

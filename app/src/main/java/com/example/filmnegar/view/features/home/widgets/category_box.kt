@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -23,17 +24,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
-import com.example.filmnegar.model.data.Movie
-import com.example.filmnegar.utils.MyScreens
-import com.example.filmnegar.view.features.home.movie.MovieViewModel
+import com.example.filmnegar.view.features.home.HomeViewModel
 
 @Composable
 fun CategoryBox(
-     boxTitle: String,
-     movies: List<Movie>,
-     navigator: NavHostController,
-     viewModel: MovieViewModel = hiltViewModel()
+    boxTitle: String,
+    onShowMoreClicked: () -> Unit,
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
     Box(
         modifier = Modifier
@@ -52,10 +49,14 @@ fun CategoryBox(
                 horizontalArrangement = Arrangement.SpaceBetween
 
             ) {
-                Row (Modifier.clickable {
-                    navigator.navigate(route = MyScreens.AllMoviesScreen.rout)
-                }){
-                    Icon(imageVector  = Icons.Filled.KeyboardArrowLeft, tint=Color.White, contentDescription = "")
+                Row(Modifier.clickable {
+                    onShowMoreClicked.invoke()
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowLeft,
+                        tint = Color.White,
+                        contentDescription = ""
+                    )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
                         text = "مشاهده همه",
@@ -79,10 +80,11 @@ fun CategoryBox(
                 modifier = Modifier.padding(top = 16.dp),
                 contentPadding = PaddingValues(end = 16.dp)
             ) {
-                items(20) {
+                items(viewModel.film.value){movie->
                     MovieItem(
+                        movie = movie,
                         onMovieClicked = {
-                            viewModel.getMovieById(1)
+                            viewModel.getMovieById(movie.id)
 //                            navigator.navigate(MyScreens.MovieScreen.rout)
                         }
                     )
