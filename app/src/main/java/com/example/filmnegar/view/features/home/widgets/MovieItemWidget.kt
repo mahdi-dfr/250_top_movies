@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.filmnegar.model.data.Movie
-import com.example.filmnegar.utils.imageFakeUrl
 import com.example.filmnegar.view.theme.myFontFamily
 
 @Composable
@@ -42,9 +41,9 @@ fun MovieItem(
     ) {
         Box {
             AsyncImage(
-                model = imageFakeUrl,
+                model = movie.poster,
                 contentDescription = "",
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.FillBounds,
             )
 
             Box {
@@ -69,8 +68,8 @@ fun MovieItem(
                             Text(
                                 text = movie.originalName + " " + movie.year,
                                 fontFamily = myFontFamily,
+                                fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 17.sp,
                                 color = Color.White
                             )
 

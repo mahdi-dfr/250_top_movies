@@ -34,6 +34,7 @@ val EMPTY_MOVIE = Movie(
     imdbRate = "",
     year = 0,
     banner = "",
+    poster = "",
     tizer = "",
     boxOffice = "",
     prices = "",

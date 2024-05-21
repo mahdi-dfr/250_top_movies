@@ -1,6 +1,7 @@
 package com.example.filmnegar.view.features.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -55,6 +56,9 @@ class HomeViewModel @Inject constructor(
             if (serviceResponse.status == "success") {
                 _allMoviesData.value = serviceResponse.result!!
                 _film.value = serviceResponse.result!!
+                Log.i("TAG", "getActionMovieggs: "+_allMoviesData.value)
+                Log.i("TAG", "getActionMoviewwws: "+_film.value)
+                Log.i("TAG", "getActionMoviewwws: "+film.value)
             }
         }
     }

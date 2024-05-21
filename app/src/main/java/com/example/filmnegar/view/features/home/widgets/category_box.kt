@@ -24,11 +24,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.filmnegar.model.data.Movie
 import com.example.filmnegar.view.features.home.HomeViewModel
 
 @Composable
 fun CategoryBox(
     boxTitle: String,
+    movieList : List<Movie>,
     onShowMoreClicked: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
@@ -78,9 +80,9 @@ fun CategoryBox(
 
             LazyRow(
                 modifier = Modifier.padding(top = 16.dp),
-                contentPadding = PaddingValues(end = 16.dp)
+                contentPadding = PaddingValues(end = 16.dp, start = 16.dp)
             ) {
-                items(viewModel.film.value){movie->
+                items(movieList){movie->
                     MovieItem(
                         movie = movie,
                         onMovieClicked = {

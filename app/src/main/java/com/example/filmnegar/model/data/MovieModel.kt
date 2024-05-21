@@ -35,6 +35,7 @@ data class Movie(
     val imdbRate: String,
     val year: Int,
     val banner: String?,
+    val poster: String?,
     val tizer: String?,
     @SerializedName("box_office")
     val boxOffice: String,

@@ -2,6 +2,7 @@ package com.example.filmnegar.view.features.home.allMovies
 
 import MyAppBar
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,7 +26,7 @@ fun AllMoviesScreen(
     viewModel : HomeViewModel = hiltViewModel()
 ) {
 
-    val numbers = (0..20).toList()
+    Log.i("TAG", "AllMoviesScreenss: "+viewModel.film.value)
 
     Scaffold(
         topBar = {

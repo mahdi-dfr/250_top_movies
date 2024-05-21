@@ -88,41 +88,39 @@ fun HomeScreen(
                 }
             }
 
+            Log.i("TAG", "HomeScreenee: "+viewModel.allMoviesData.value)
+
             Spacer(modifier = Modifier.height(40.dp))
 
-            CategoryBox(boxTitle = "فیلم", onShowMoreClicked = {
+            CategoryBox(boxTitle = "فیلم", viewModel.allMoviesData.value, onShowMoreClicked = {
                 viewModel.getAllMoviesScreenData("movie")
                 navController.navigate(MyScreens.AllMoviesScreen.rout)
             })
 
             Spacer(modifier = Modifier.height(20.dp))
 
-//            CategoryBox(boxTitle = "سریال", viewModel.series.value, navigator = navController)
-//
-//            Spacer(modifier = Modifier.height(20.dp))
-
-            CategoryBox(boxTitle = "اکشن", onShowMoreClicked = {
+            CategoryBox(boxTitle = "اکشن", viewModel.action.value, onShowMoreClicked = {
                 viewModel.getAllMoviesScreenData("action")
                 navController.navigate(MyScreens.AllMoviesScreen.rout)
             })
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "انیمیشن", onShowMoreClicked = {
+            CategoryBox(boxTitle = "انیمیشن", viewModel.animation.value ,onShowMoreClicked = {
                 viewModel.getAllMoviesScreenData("Animation")
                 navController.navigate(MyScreens.AllMoviesScreen.rout)
             })
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "عاشقانه", onShowMoreClicked = {
+            CategoryBox(boxTitle = "عاشقانه", viewModel.drama.value, onShowMoreClicked = {
                 viewModel.getAllMoviesScreenData("Drama")
                 navController.navigate(MyScreens.AllMoviesScreen.rout)
             })
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            CategoryBox(boxTitle = "ماجراجویی", onShowMoreClicked = {
+            CategoryBox(boxTitle = "ماجراجویی", viewModel.adventure.value, onShowMoreClicked = {
                 viewModel.getAllMoviesScreenData("Adventure")
                 navController.navigate(MyScreens.AllMoviesScreen.rout)
             })
